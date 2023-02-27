@@ -18,7 +18,21 @@ class StringTree:
         self.children.append(child)
 
 
+def searchWord(word,root):
+    returnList=[]
+    for firstChild in root.children:
+        for secondChild in firstChild.children:
+            for thirdChild in secondChild.children:
+                if  thirdChild.text.lower().replace(",","").__eq__(word.lower()):
+                    returnList.append(thirdChild.parent)
 
+    print(len(returnList))                
+    if len(returnList) != 0:
+        return returnList
+    else:
+        return None
+                    
+            
 
 def buildTree(text):
     root=StringTree(text)
@@ -36,6 +50,10 @@ def buildTree(text):
 
 
 root=buildTree(text)
+
+
+senTence=searchWord("gestures",root)
+
 
 
 
